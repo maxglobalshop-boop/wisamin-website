@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>บทความสุขภาพ — วิษามิน WISAMIN</title>
+<meta name="description" content="เกร็ดความรู้และแรงบันดาลใจเรื่องการดูแลสุขภาพในชีวิตประจำวัน จากวิษามิน">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=Noto+Sans+Thai:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+<style>
+  .blog-card { background:#fff;border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:.2s;display:flex;flex-direction:column }
+  .blog-card:hover { transform:translateY(-6px);box-shadow:var(--shadow-lg) }
+  .blog-cover { aspect-ratio:16/10;display:grid;place-items:center;color:#fff;font-weight:800;font-size:1.1rem;text-align:center;padding:16px }
+  .blog-body { padding:20px }
+  .blog-tag { font-size:.74rem;font-weight:600;color:var(--sage-dark);letter-spacing:.06em;text-transform:uppercase }
+  .blog-body h3 { margin:6px 0 8px }
+  .blog-body p { color:var(--ink-soft);font-size:.92rem }
+</style>
+</head>
+<body>
+<div data-header></div>
+
+<div class="page-head">
+  <div class="container">
+    <div class="breadcrumb"><a href="index.html">หน้าแรก</a> / บทความสุขภาพ</div>
+    <h1>บทความสุขภาพ</h1>
+    <p class="lead" style="margin-top:8px">เกร็ดความรู้และแรงบันดาลใจ เพื่อการดูแลตัวเองที่ดีขึ้นในทุกวัน</p>
+  </div>
+</div>
+
+<section>
+  <div class="container">
+    <div class="grid grid-3" data-blog-grid></div>
+    <p class="note text-center" style="margin-top:30px">* เนื้อหาเพื่อการให้ความรู้ทั่วไป ไม่ใช่คำแนะนำทางการแพทย์ หากมีข้อสงสัยควรปรึกษาแพทย์หรือเภสัชกร</p>
+  </div>
+</section>
+
+<div data-line-cta></div>
+<div data-footer></div>
+
+<script src="js/config.js"></script>
+<script src="js/products.js"></script>
+<script src="js/render.js"></script>
+<script src="js/urgency.js"></script>
+<script src="js/main.js"></script>
+<script>
+  var POSTS = [
+    ['โภชนาการ','#7c8a5f','5 เคล็ดลับกินให้ครบ 5 หมู่ ในชีวิตที่เร่งรีบ','เมนูง่ายๆ และไอเดียจัดจานที่ช่วยให้คนทำงานยุ่งยังดูแลตัวเองได้'],
+    ['ออกกำลังกาย','#e5732e','โปรตีนสำคัญกับคนออกกำลังกายอย่างไร','ทำความเข้าใจบทบาทของโปรตีนต่อการดูแลรูปร่างและการฟื้นตัวหลังออกกำลังกาย'],
+    ['ไลฟ์สไตล์','#3c7fb0','คนเมืองกับแสงแดด ทำไมวิตามินดีถึงสำคัญ','เมื่อชีวิตส่วนใหญ่อยู่ในร่ม การเลือกเสริมวิตามินดีจึงเป็นทางเลือกที่น่าสนใจ'],
+    ['ระบบทางเดินอาหาร','#8a5a9e','จุลินทรีย์ดีกับสมดุลลำไส้ เรื่องที่ควรรู้','ทำความรู้จักโพรไบโอติกและพรีไบโอติกในเชิงโภชนาการแบบเข้าใจง่าย'],
+    ['ความงาม','#e28a9a','ดูแลผิวจากภายใน ด้วยไลฟ์สไตล์ที่ดี','การพักผ่อน การกิน และการดูแลตัวเองที่ส่งผลต่อผิวพรรณให้ดูสดใส'],
+    ['สุขภาพหัวใจ','#3c9b7a','โอเมก้า-3 กับการดูแลสุขภาพเชิงโภชนาการ','กรดไขมันดีที่ร่างกายต้องการ และแหล่งอาหารที่พบได้ในชีวิตประจำวัน'],
+  ];
+  document.addEventListener('DOMContentLoaded', function () {
+    document.querySelector('[data-blog-grid]').innerHTML = POSTS.map(function (p) {
+      return '<a class="blog-card reveal" href="' + window.WISAMIN_CONFIG.brand.lineUrl + '" target="_blank" rel="noopener">' +
+        '<div class="blog-cover" style="background:linear-gradient(160deg,' + p[1] + ',' + shadeColor(p[1]) + ')">' + p[2] + '</div>' +
+        '<div class="blog-body"><span class="blog-tag">' + p[0] + '</span><h3>' + p[2] + '</h3><p>' + p[3] + '</p>' +
+        '<span class="note" style="color:var(--accent);font-weight:600;margin-top:10px;display:inline-block">อ่านเพิ่มเติม →</span></div></a>';
+    }).join('');
+    var slot = document.querySelector('[data-line-cta]');
+    if (slot) slot.outerHTML = window.lineCtaBlock();
+    if (window.initUrgency) window.initUrgency();
+    if (window.initReveal) window.initReveal();
+  });
+</script>
+</body>
+</html>

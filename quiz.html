@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ทำแบบทดสอบ — หาสินค้าที่ใช่สำหรับคุณ | วิษามิน WISAMIN</title>
+<meta name="description" content="ตอบ 4 คำถามสั้นๆ แล้วให้วิษามินแนะนำผลิตภัณฑ์เสริมอาหารที่เข้ากับไลฟ์สไตล์ของคุณ">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=Noto+Sans+Thai:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+<style>
+  .quiz-wrap { max-width: 640px; margin: 0 auto; }
+  .quiz-progress-track { height: 8px; background: var(--sand); border-radius: 100px; overflow: hidden; margin-bottom: 24px; }
+  .quiz-progress-track > i { display: block; height: 100%; background: linear-gradient(90deg,var(--sage),var(--accent)); width: 0; transition: width .4s ease; }
+  .quiz-card { background: #fff; border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 40px 32px; box-shadow: var(--shadow); }
+  .quiz-step { font-size: .85rem; font-weight: 600; color: var(--sage-dark); letter-spacing: .06em; }
+  .quiz-card h2 { margin: 8px 0 26px; font-size: 1.5rem; }
+  .quiz-opts { display: grid; gap: 12px; }
+  .quiz-opt { text-align: left; font-family: inherit; font-size: 1.02rem; font-weight: 500; cursor: pointer;
+    background: var(--cream); border: 1.5px solid var(--border); border-radius: 14px; padding: 16px 18px; transition: .18s; color: var(--ink); }
+  .quiz-opt:hover { border-color: var(--sage); background: var(--sage-light); transform: translateX(4px); }
+</style>
+</head>
+<body>
+<div data-header></div>
+
+<div class="page-head">
+  <div class="container">
+    <div class="breadcrumb"><a href="index.html">หน้าแรก</a> / ทำแบบทดสอบ</div>
+    <h1>หาสินค้าที่ใช่ ใน 30 วินาที</h1>
+    <p class="lead" style="margin-top:8px">ตอบสั้นๆ 4 ข้อ แล้วให้เราแนะนำสิ่งที่เข้ากับไลฟ์สไตล์ของคุณ</p>
+  </div>
+</div>
+
+<section>
+  <div class="container">
+    <div class="quiz-wrap">
+      <div class="quiz-progress-track"><i id="quizProgress"></i></div>
+      <div class="quiz-card" id="quizBox">
+        <div class="quiz-step" id="quizStep">คำถาม 1 / 4</div>
+        <h2 id="quizQ">…</h2>
+        <div class="quiz-opts" id="quizA"></div>
+      </div>
+      <div class="quiz-card" id="quizCard" style="display:none"></div>
+    </div>
+  </div>
+</section>
+
+<div data-line-cta></div>
+<div data-footer></div>
+
+<script src="js/config.js"></script>
+<script src="js/products.js"></script>
+<script src="js/render.js"></script>
+<script src="js/urgency.js"></script>
+<script src="js/main.js"></script>
+<script src="js/quiz.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var slot = document.querySelector('[data-line-cta]');
+    if (slot) slot.outerHTML = window.lineCtaBlock();
+    if (window.initUrgency) window.initUrgency();
+    if (window.initReveal) window.initReveal();
+  });
+</script>
+</body>
+</html>

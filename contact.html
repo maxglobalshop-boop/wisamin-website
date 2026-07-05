@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ติดต่อเรา — วิษามิน WISAMIN</title>
+<meta name="description" content="ติดต่อวิษามิน แอดไลน์ปรึกษาฟรี สอบถามสินค้าและการสั่งซื้อได้ทุกวัน">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=Noto+Sans+Thai:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div data-header></div>
+
+<div class="page-head">
+  <div class="container">
+    <div class="breadcrumb"><a href="index.html">หน้าแรก</a> / ติดต่อเรา</div>
+    <h1>ติดต่อเรา</h1>
+    <p class="lead" style="margin-top:8px">มีคำถามเรื่องสุขภาพหรือสินค้า? ทีมงานพร้อมดูแลคุณ</p>
+  </div>
+</div>
+
+<section>
+  <div class="container">
+    <div class="split">
+      <div class="reveal">
+        <h2>ช่องทางติดต่อ</h2>
+        <ul class="feature-list" style="margin-top:20px">
+          <li><span class="ic">L</span><div><b>LINE Official</b><br><span class="muted">@wisamin — ตอบไว ปรึกษาฟรี ทุกวัน</span></div></li>
+          <li><span class="ic">✉</span><div><b>อีเมล</b><br><span class="muted" data-email>—</span></div></li>
+          <li><span class="ic">☎</span><div><b>โทรศัพท์</b><br><span class="muted" data-phone>—</span></div></li>
+          <li><span class="ic">⏰</span><div><b>เวลาทำการ</b><br><span class="muted" data-hours>—</span></div></li>
+        </ul>
+        <div style="margin-top:26px">
+          <a class="btn btn-line btn-lg" href="https://lin.ee/8K7mfwg" target="_blank" rel="noopener">💬 แอดไลน์เลย รับส่วนลดพิเศษ</a>
+        </div>
+      </div>
+      <div class="reveal">
+        <div style="background:#fff;border:1px solid var(--border);border-radius:var(--radius-lg);padding:36px;box-shadow:var(--shadow);text-align:center">
+          <div class="line-float" style="position:static;display:inline-flex;animation:none;margin-bottom:18px"><span class="li">L</span><span>@wisamin</span></div>
+          <h3>สแกน / แอดไลน์เพื่อเริ่มต้น</h3>
+          <p class="muted" style="margin:10px 0 20px">แอดไลน์แล้วแจ้ง "สนใจสินค้า" ทีมงานจะดูแลคุณตั้งแต่เลือกสินค้าจนถึงจัดส่ง พร้อมส่วนลดพิเศษเฉพาะช่วงโปรโมชัน</p>
+          <div style="width:170px;height:170px;margin:0 auto;border-radius:16px;background:repeating-conic-gradient(var(--ink) 0% 25%,#fff 0% 50%) 50%/20px 20px;border:8px solid #fff;box-shadow:var(--shadow)"></div>
+          <p class="note" style="margin-top:14px">(ตัวอย่าง QR — แทนที่ด้วย QR LINE OA จริงของคุณ)</p>
+          <a class="btn btn-accent btn-block" href="https://lin.ee/8K7mfwg" target="_blank" rel="noopener" style="margin-top:16px">เปิดไลน์ทันที</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div data-line-cta></div>
+<div data-footer></div>
+
+<script src="js/config.js"></script>
+<script src="js/products.js"></script>
+<script src="js/render.js"></script>
+<script src="js/urgency.js"></script>
+<script src="js/main.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var B = window.WISAMIN_CONFIG.brand;
+    document.querySelector('[data-email]').textContent = B.email;
+    document.querySelector('[data-phone]').textContent = B.phone;
+    document.querySelector('[data-hours]').textContent = B.hours;
+    var slot = document.querySelector('[data-line-cta]');
+    if (slot) slot.outerHTML = window.lineCtaBlock();
+    if (window.initUrgency) window.initUrgency();
+    if (window.initReveal) window.initReveal();
+  });
+</script>
+</body>
+</html>

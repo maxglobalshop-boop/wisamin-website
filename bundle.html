@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>เซ็ตสุดคุ้ม Daily Essentials — วิษามิน WISAMIN</title>
+<meta name="description" content="เซ็ต Daily Essentials รวมมัลติวิตามิน วิตามินซี และโอเมก้า-3 ประหยัดสูงสุด 25% ส่งฟรีทั่วไทย">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=Noto+Sans+Thai:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div data-header></div>
+
+<div class="page-head">
+  <div class="container">
+    <div class="breadcrumb"><a href="index.html">หน้าแรก</a> / เซ็ตสุดคุ้ม</div>
+    <h1>เซ็ต Daily Essentials</h1>
+    <p class="lead" style="margin-top:8px">ดูแลตัวเองครบ จบในเซ็ตเดียว — ประหยัดสูงสุด 25%</p>
+  </div>
+</div>
+
+<section>
+  <div class="container">
+    <div class="split">
+      <div class="reveal hero-visual" style="background:radial-gradient(circle at 50% 40%,#fff,#e6ebda)">
+        <div style="display:flex;gap:14px">
+          <div class="hero-jar" style="width:110px;height:150px;background:linear-gradient(160deg,#e0a63c,#b07d1f)"><div class="jar-label" style="font-size:.9rem">MULTI</div></div>
+          <div class="hero-jar" style="width:110px;height:150px;background:linear-gradient(160deg,#f0803c,#c85f1f)"><div class="jar-label" style="font-size:.9rem">VIT C</div></div>
+          <div class="hero-jar" style="width:110px;height:150px;background:linear-gradient(160deg,#3c7fb0,#295a80)"><div class="jar-label" style="font-size:.85rem">OMEGA</div></div>
+        </div>
+      </div>
+      <div class="reveal">
+        <span class="pill">ประหยัด 25%</span>
+        <h2 style="margin:14px 0">3 ตัวช่วยประจำวัน<br>ของคนรักสุขภาพ</h2>
+        <p class="lead">รวมสิ่งที่คนดูแลตัวเองเลือกมากที่สุดไว้ในเซ็ตเดียว พร้อมส่วนลดพิเศษและส่งฟรีทั่วไทย</p>
+        <div class="price-row" style="margin:18px 0"><span class="price-now" style="font-size:2.2rem" data-bundle-price>฿1,990</span><span class="price-old" data-bundle-old>฿2,670</span></div>
+        <div class="stock-hint" style="margin-bottom:16px">🔥 เหลือเพียง 24 เซ็ต ในราคานี้ · <span data-live="viewing">247</span> คนกำลังดูอยู่</div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap">
+          <a class="btn btn-accent btn-lg" href="https://lin.ee/8K7mfwg" target="_blank" rel="noopener">🛒 สั่งเซ็ตนี้ผ่านไลน์</a>
+          <a class="btn btn-line btn-lg" href="https://lin.ee/8K7mfwg" target="_blank" rel="noopener">💬 ปรึกษาฟรี</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="container">
+    <div class="text-center reveal" style="margin-bottom:34px"><h2>ในเซ็ตนี้ประกอบด้วย</h2></div>
+    <div class="grid grid-3" data-bundle-items></div>
+    <div class="text-center reveal" style="margin-top:36px;background:#fff;border-radius:var(--radius);padding:28px;max-width:560px;margin-left:auto;margin-right:auto;box-shadow:var(--shadow)">
+      <p class="muted">ซื้อแยกทั้งหมด <span style="text-decoration:line-through" data-bundle-old>฿2,670</span></p>
+      <p style="font-size:1.4rem;font-weight:800;color:var(--accent);margin:6px 0">ซื้อเป็นเซ็ต เพียง <span data-bundle-price>฿1,990</span></p>
+      <p class="pill">ประหยัดทันที <span data-bundle-save>฿680</span></p>
+    </div>
+  </div>
+</section>
+
+<div data-line-cta></div>
+<div data-footer></div>
+
+<script src="js/config.js"></script>
+<script src="js/products.js"></script>
+<script src="js/render.js"></script>
+<script src="js/urgency.js"></script>
+<script src="js/main.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var B = window.WISAMIN_BUNDLE;
+    var items = B.items.map(getProductById);
+    var full = items.reduce(function (s, p) { return s + p.price; }, 0);
+    var save = full - B.bundlePrice;
+
+    document.querySelectorAll('[data-bundle-price]').forEach(function (e) { e.textContent = moneyStr(B.bundlePrice); });
+    document.querySelectorAll('[data-bundle-old]').forEach(function (e) { e.textContent = moneyStr(full); });
+    document.querySelectorAll('[data-bundle-save]').forEach(function (e) { e.textContent = moneyStr(save); });
+
+    renderGrid('[data-bundle-items]', items);
+
+    var slot = document.querySelector('[data-line-cta]');
+    if (slot) slot.outerHTML = window.lineCtaBlock();
+    if (window.initUrgency) window.initUrgency();
+    if (window.initReveal) window.initReveal();
+  });
+</script>
+</body>
+</html>

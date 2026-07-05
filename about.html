@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>เรื่องราวแบรนด์ — วิษามิน WISAMIN</title>
+<meta name="description" content="เรื่องราวของวิษามิน แบรนด์ผลิตภัณฑ์เสริมอาหารที่เชื่อว่าสุขภาพดีเริ่มต้นจากการดูแลตัวเองทุกวัน">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=Noto+Sans+Thai:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div data-header></div>
+
+<div class="page-head">
+  <div class="container">
+    <div class="breadcrumb"><a href="index.html">หน้าแรก</a> / เรื่องราวแบรนด์</div>
+    <h1>เรื่องราวของวิษามิน</h1>
+    <p class="lead" style="margin-top:8px">เราเชื่อว่าการดูแลสุขภาพที่ดี ไม่ควรเป็นเรื่องยากหรือไกลตัว</p>
+  </div>
+</div>
+
+<section>
+  <div class="container">
+    <div style="max-width:720px;margin:0 auto" class="reveal">
+      <span class="eyebrow">จุดเริ่มต้น</span>
+      <h2>ทุกอย่างเริ่มจากคำถามง่ายๆ</h2>
+      <p class="lead" style="margin:16px 0">"ทำไมการดูแลตัวเองให้ดีในแต่ละวัน ถึงต้องยุ่งยากขนาดนี้?"</p>
+      <p>วิษามินเกิดขึ้นจากกลุ่มคนที่ใส่ใจสุขภาพ แต่ก็ใช้ชีวิตยุ่งเหมือนคนทั่วไป เราเข้าใจดีว่าการกินอาหารให้ครบถ้วนในทุกวันเป็นเรื่องที่ทำได้ยาก เราจึงตั้งใจสร้างผลิตภัณฑ์เสริมอาหารที่ <strong>คัดสรรวัตถุดิบอย่างดี ทานง่าย และเข้ากับชีวิตจริง</strong> เพื่อให้การใส่ใจตัวเองเป็นเรื่องที่ทำได้จริงในทุกวัน</p>
+      <p style="margin-top:14px">เราไม่ได้อยากขายแค่ผลิตภัณฑ์ แต่เราอยากเป็นเพื่อนคู่คิดเรื่องการดูแลสุขภาพ ที่คุณสามารถแอดไลน์มาปรึกษาได้ทุกเมื่อ</p>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="container">
+    <div class="text-center reveal" style="max-width:600px;margin:0 auto 40px">
+      <span class="eyebrow">สิ่งที่เรายึดมั่น</span>
+      <h2>คุณค่าที่เป็นหัวใจของวิษามิน</h2>
+    </div>
+    <div class="story-steps">
+      <div class="story-step reveal"><h3>คุณภาพมาก่อน</h3><p class="muted">เราเลือกใช้แต่วัตถุดิบที่เราเองก็มั่นใจ และกล้าให้คนที่เรารักใช้</p></div>
+      <div class="story-step reveal"><h3>โปร่งใส จริงใจ</h3><p class="muted">เราสื่อสารตรงไปตรงมา ในกรอบที่ถูกต้อง ไม่กล่าวอ้างเกินจริง</p></div>
+      <div class="story-step reveal"><h3>ดูแลกันจริงๆ</h3><p class="muted">ทีมของเราพร้อมให้คำปรึกษา เพราะเราอยากให้คุณได้สิ่งที่เหมาะกับตัวเอง</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="stats reveal">
+      <div class="stat"><b data-count="1000000">1,000,000</b><span>คนไว้วางใจวิษามิน</span></div>
+      <div class="stat"><b data-count="12480">12,480</b><span>รีวิวจากลูกค้าจริง</span></div>
+      <div class="stat"><b data-count="8">8</b><span>ผลิตภัณฑ์ดูแลสุขภาพ</span></div>
+      <div class="stat"><b data-count="4.9" data-decimals="1">4.9</b><span>คะแนนความพึงพอใจ</span></div>
+    </div>
+  </div>
+</section>
+
+<div data-line-cta></div>
+<div data-footer></div>
+
+<script src="js/config.js"></script>
+<script src="js/products.js"></script>
+<script src="js/render.js"></script>
+<script src="js/urgency.js"></script>
+<script src="js/main.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var slot = document.querySelector('[data-line-cta]');
+    if (slot) slot.outerHTML = window.lineCtaBlock();
+    if (window.initUrgency) window.initUrgency();
+    if (window.initReveal) window.initReveal();
+  });
+</script>
+</body>
+</html>

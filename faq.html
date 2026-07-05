@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>คำถามพบบ่อย — วิษามิน WISAMIN</title>
+<meta name="description" content="รวมคำถามพบบ่อยเรื่องการสั่งซื้อ การจัดส่ง และการรับประทานผลิตภัณฑ์วิษามิน">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=Noto+Sans+Thai:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+<style>
+  .faq-list { max-width:760px;margin:0 auto;display:grid;gap:12px }
+  .faq-item { background:#fff;border:1px solid var(--border);border-radius:14px;overflow:hidden }
+  .faq-q { width:100%;text-align:left;font-family:inherit;font-size:1.05rem;font-weight:600;cursor:pointer;
+    background:none;border:none;padding:20px 22px;display:flex;justify-content:space-between;gap:16px;align-items:center;color:var(--ink) }
+  .faq-q .pm { flex:none;width:26px;height:26px;border-radius:50%;background:var(--sage-light);color:var(--sage-dark);display:grid;place-items:center;font-weight:800;transition:.2s }
+  .faq-a { max-height:0;overflow:hidden;transition:max-height .3s ease;color:var(--ink-soft) }
+  .faq-a > div { padding:0 22px 20px }
+  .faq-item.open .pm { transform:rotate(45deg);background:var(--accent);color:#fff }
+</style>
+</head>
+<body>
+<div data-header></div>
+
+<div class="page-head">
+  <div class="container">
+    <div class="breadcrumb"><a href="index.html">หน้าแรก</a> / คำถามพบบ่อย</div>
+    <h1>คำถามพบบ่อย</h1>
+    <p class="lead" style="margin-top:8px">รวมทุกเรื่องที่ลูกค้าถามบ่อย หากไม่พบคำตอบ แอดไลน์มาถามเราได้เลย</p>
+  </div>
+</div>
+
+<section>
+  <div class="container">
+    <div class="faq-list" data-faq></div>
+    <div class="text-center" style="margin-top:34px">
+      <p class="lead">ยังมีคำถามอื่นอีกไหม?</p>
+      <a class="btn btn-line btn-lg" href="https://lin.ee/8K7mfwg" target="_blank" rel="noopener" style="margin-top:12px">💬 แอดไลน์ถามทีมงาน</a>
+    </div>
+  </div>
+</section>
+
+<div data-footer></div>
+
+<script src="js/config.js"></script>
+<script src="js/products.js"></script>
+<script src="js/render.js"></script>
+<script src="js/urgency.js"></script>
+<script src="js/main.js"></script>
+<script>
+  var FAQ = [
+    ['สั่งซื้อสินค้าได้อย่างไร?','สั่งซื้อง่ายๆ เพียงแอดไลน์ @wisamin แล้วแจ้งสินค้าที่ต้องการ ทีมงานจะดูแลคุณตั้งแต่เลือกสินค้าจนถึงจัดส่ง'],
+    ['มีค่าจัดส่งไหม จัดส่งกี่วัน?','จัดส่งฟรีทั่วไทยเมื่อสั่งครบ ฿990 โดยปกติจัดส่งภายใน 1-3 วันทำการ (อาจต่างกันตามพื้นที่)'],
+    ['ชำระเงินได้ช่องทางไหนบ้าง?','รองรับการโอนผ่านธนาคาร พร้อมเพย์ และเก็บเงินปลายทาง (เงื่อนไขตามที่แจ้งในไลน์)'],
+    ['ผลิตภัณฑ์นี้ทานอย่างไร?','แต่ละผลิตภัณฑ์มีวิธีรับประทานระบุไว้ที่หน้าสินค้าและบนฉลาก แนะนำให้ทานตามคำแนะนำ และปรึกษาแพทย์/เภสัชกรหากมีโรคประจำตัว'],
+    ['ผลิตภัณฑ์เสริมอาหารทานแทนยาได้ไหม?','ไม่ได้ครับ ผลิตภัณฑ์เสริมอาหารมีไว้เพื่อส่งเสริมโภชนาการ ไม่มีผลในการป้องกันหรือรักษาโรค และไม่สามารถใช้แทนยาหรือการรักษาของแพทย์ได้'],
+    ['เห็นผลเมื่อไหร่?','ผลิตภัณฑ์เสริมอาหารเป็นการดูแลสุขภาพในระยะยาว ผลลัพธ์ขึ้นอยู่กับแต่ละบุคคลและการดูแลตัวเองโดยรวม เช่น การกิน การพักผ่อน และการออกกำลังกาย'],
+    ['เก็บรักษาอย่างไร?','เก็บในที่แห้ง หลีกเลี่ยงแสงแดดและความชื้น ปิดฝาให้สนิทหลังใช้งาน และเก็บให้พ้นมือเด็ก'],
+    ['เปลี่ยน/คืนสินค้าได้ไหม?','หากสินค้ามีปัญหาจากการผลิตหรือจัดส่ง ติดต่อทีมงานผ่านไลน์ได้ทันที เราพร้อมดูแลคุณ'],
+  ];
+  document.addEventListener('DOMContentLoaded', function () {
+    var host = document.querySelector('[data-faq]');
+    host.innerHTML = FAQ.map(function (f) {
+      return '<div class="faq-item"><button class="faq-q">' + f[0] + '<span class="pm">+</span></button>' +
+        '<div class="faq-a"><div>' + f[1] + '</div></div></div>';
+    }).join('');
+    host.querySelectorAll('.faq-q').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var item = btn.parentElement;
+        var ans = item.querySelector('.faq-a');
+        var isOpen = item.classList.contains('open');
+        host.querySelectorAll('.faq-item').forEach(function (it) {
+          it.classList.remove('open'); it.querySelector('.faq-a').style.maxHeight = null;
+        });
+        if (!isOpen) { item.classList.add('open'); ans.style.maxHeight = ans.scrollHeight + 'px'; }
+      });
+    });
+  });
+</script>
+</body>
+</html>

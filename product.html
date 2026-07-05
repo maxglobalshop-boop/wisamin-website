@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>สินค้า — วิษามิน WISAMIN</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=Noto+Sans+Thai:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div data-header></div>
+
+<div data-product></div>
+
+<div data-line-cta></div>
+<div data-footer></div>
+
+<script src="js/config.js"></script>
+<script src="js/products.js"></script>
+<script src="js/render.js"></script>
+<script src="js/urgency.js"></script>
+<script src="js/main.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var C = window.WISAMIN_CONFIG;
+    var params = new URLSearchParams(location.search);
+    var id = params.get('id');
+    var p = getProductById(id) || window.WISAMIN_PRODUCTS[0];
+    document.title = p.name + ' — วิษามิน WISAMIN';
+
+    var stockPct = Math.max(6, Math.min(100, p.stock));
+    var hi = p.highlights.map(function (h) { return '<li><span class="ic">✓</span> ' + h + '</li>'; }).join('');
+
+    var html =
+      '<div class="page-head"><div class="container"><div class="breadcrumb">' +
+        '<a href="index.html">หน้าแรก</a> / <a href="shop.html">สินค้า</a> / ' + p.categoryLabel +
+      '</div></div></div>' +
+      '<section><div class="container"><div class="split">' +
+        '<div class="reveal hero-visual" style="background:radial-gradient(circle at 55% 40%,#fff,' + p.color + '18);overflow:hidden">' +
+          (p.image
+            ? '<img src="' + p.image + '" alt="' + p.name + '" style="width:100%;height:100%;object-fit:cover">'
+            : '<div class="hero-jar" style="background:linear-gradient(160deg,' + p.color + ',' + shadeColor(p.color) + ')">' +
+                '<div class="jar-label">' + p.categoryLabel + '</div><div class="jar-sub">WISAMIN</div></div>') +
+        '</div>' +
+        '<div class="reveal">' +
+          (p.badge ? '<span class="pill">' + p.badge + '</span>' : '') +
+          '<h1 style="margin:12px 0 6px">' + p.name + '</h1>' +
+          '<p class="lead">' + p.subtitle + '</p>' +
+          '<div class="product-rating" style="margin:12px 0"><span class="stars" style="color:var(--gold)">' + starStr(p.rating) + '</span> ' +
+            p.rating + ' · ' + p.reviews.toLocaleString('th-TH') + ' รีวิว</div>' +
+          '<div class="price-row"><span class="price-now" style="font-size:2rem">' + moneyStr(p.price) + '</span>' +
+            (p.oldPrice ? '<span class="price-old">' + moneyStr(p.oldPrice) + '</span>' : '') +
+            '<span class="price-unit">' + p.unit + '</span></div>' +
+          '<p>' + p.short + '</p>' +
+          '<div class="stock-bar" style="margin:16px 0 6px"><i style="width:' + stockPct + '%"></i></div>' +
+          '<div class="stock-hint">🔥 เหลือเพียง ' + p.stock + ' ชิ้น · <span data-live="viewing">247</span> คนกำลังดูสินค้านี้อยู่</div>' +
+          '<div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:18px">' +
+            '<a class="btn btn-accent btn-lg" href="' + C.brand.lineUrl + '" target="_blank" rel="noopener">🛒 สั่งซื้อผ่านไลน์</a>' +
+            '<a class="btn btn-line btn-lg" href="' + C.brand.lineUrl + '" target="_blank" rel="noopener">💬 สอบถาม/ปรึกษาฟรี</a>' +
+          '</div>' +
+          '<div class="urgency-bar" style="border-radius:12px;margin-top:20px">⏰ ราคาโปรโมชันเหลืออีก ' +
+            '<strong><span data-cd="h">00</span>:<span data-cd="m">00</span>:<span data-cd="s">00</span></strong></div>' +
+          '<ul class="feature-list" style="margin-top:22px">' + hi + '</ul>' +
+        '</div>' +
+      '</div></div></section>' +
+      '<section class="band"><div class="container"><div class="split">' +
+        '<div class="reveal"><h2>ส่วนประกอบสำคัญ</h2><p class="lead" style="margin-top:10px">' + p.ingredients + '</p></div>' +
+        '<div class="reveal"><h2>วิธีรับประทาน</h2><p class="lead" style="margin-top:10px">' + p.directions + '</p>' +
+          '<p class="note" style="margin-top:14px">* ผลิตภัณฑ์เสริมอาหาร ไม่มีผลในการป้องกันหรือรักษาโรค ควรกินอาหารหลากหลายครบ 5 หมู่</p></div>' +
+      '</div></div></section>' +
+      '<section><div class="container"><div class="text-center reveal" style="margin-bottom:34px"><span class="eyebrow">รีวิวสินค้า</span><h2>ลูกค้าพูดถึงสินค้านี้อย่างไร</h2></div>' +
+        '<div class="grid grid-3">' +
+          reviewCard('★★★★★','"คุณภาพดีเกินราคา ทานง่ายมาก จะกลับมาซื้อซ้ำแน่นอน"','ก','คุณกิตติศักดิ์','ลูกค้าประจำ') +
+          reviewCard('★★★★★','"แพ็กเกจสวย ส่งไว แอดไลน์ถามอะไรก็ตอบเร็ว ประทับใจ"','น','คุณนภาพร','พนักงานออฟฟิศ') +
+          reviewCard('★★★★★','"ใช้มา 2 เดือนแล้วชอบมาก เข้ากับไลฟ์สไตล์ที่ยุ่งๆ ของเรา"','อ','คุณอาทิตย์','นักธุรกิจ') +
+        '</div></div></section>' +
+      '<section class="band"><div class="container"><div class="text-center reveal" style="margin-bottom:30px"><h2>สินค้าที่คุณอาจสนใจ</h2></div>' +
+        '<div class="grid grid-4" data-related></div></div></section>';
+
+    document.querySelector('[data-product]').innerHTML = html;
+
+    // สินค้าเกี่ยวข้อง (4 ตัวที่ไม่ใช่ตัวนี้)
+    var related = window.WISAMIN_PRODUCTS.filter(function (x) { return x.id !== p.id; }).slice(0, 4);
+    renderGrid('[data-related]', related);
+
+    var slot = document.querySelector('[data-line-cta]');
+    if (slot) slot.outerHTML = window.lineCtaBlock();
+    if (window.initUrgency) window.initUrgency();
+    if (window.initReveal) window.initReveal();
+
+    function reviewCard(stars, text, av, name, role) {
+      return '<div class="review-card reveal"><div class="stars">' + stars + '</div><p>' + text + '</p>' +
+        '<div class="review-who"><span class="av">' + av + '</span><div><b>' + name + '</b><br><small>' + role + '</small></div></div></div>';
+    }
+  });
+</script>
+</body>
+</html>

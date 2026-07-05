@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>สินค้าทั้งหมด — วิษามิน WISAMIN</title>
+<meta name="description" content="เลือกซื้อผลิตภัณฑ์เสริมอาหารวิษามิน โปรตีน วิตามิน แคปซูล คุณภาพพรีเมียม ส่งฟรีทั่วไทย">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=Noto+Sans+Thai:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div data-header></div>
+
+<div class="page-head">
+  <div class="container">
+    <div class="breadcrumb"><a href="index.html">หน้าแรก</a> / สินค้าทั้งหมด</div>
+    <h1>สินค้าทั้งหมด</h1>
+    <p class="lead" style="margin-top:8px">คัดสรรทุกชิ้นเพื่อคนรักสุขภาพ — เลือกสิ่งที่ใช่สำหรับคุณ</p>
+    <div class="livestrip" style="justify-content:flex-start;margin-top:18px">
+      <span class="chip"><span class="dot"></span> <b data-live="viewing">247</b> คนกำลังเลือกสินค้าอยู่</span>
+      <span class="chip">🔥 ขายวันนี้ <b data-live="soldtoday">1,382</b> ชิ้น</span>
+    </div>
+  </div>
+</div>
+
+<section class="section-sm">
+  <div class="container">
+    <div class="filter-bar" data-filter-bar style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:28px">
+      <button class="btn btn-outline" data-cat="all">ทั้งหมด</button>
+      <button class="btn btn-outline" data-cat="protein">โปรตีน</button>
+      <button class="btn btn-outline" data-cat="vitamin">วิตามิน</button>
+      <button class="btn btn-outline" data-cat="capsule">แคปซูล</button>
+    </div>
+    <div class="grid grid-4" data-shop-grid></div>
+  </div>
+</section>
+
+<div data-line-cta></div>
+<div data-footer></div>
+
+<script src="js/config.js"></script>
+<script src="js/products.js"></script>
+<script src="js/render.js"></script>
+<script src="js/urgency.js"></script>
+<script src="js/main.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var all = window.WISAMIN_PRODUCTS;
+    var params = new URLSearchParams(location.search);
+    var current = params.get('cat') || 'all';
+
+    function apply(cat) {
+      current = cat;
+      var list = cat === 'all' ? all : all.filter(function (p) { return p.category === cat; });
+      renderGrid('[data-shop-grid]', list);
+      document.querySelectorAll('[data-filter-bar] button').forEach(function (b) {
+        var on = b.getAttribute('data-cat') === cat;
+        b.className = on ? 'btn btn-accent' : 'btn btn-outline';
+      });
+      if (window.initReveal) window.initReveal();
+      if (window.initUrgency) window.initUrgency();
+    }
+
+    document.querySelectorAll('[data-filter-bar] button').forEach(function (b) {
+      b.addEventListener('click', function () { apply(b.getAttribute('data-cat')); });
+    });
+    apply(current);
+
+    var slot = document.querySelector('[data-line-cta]');
+    if (slot) slot.outerHTML = window.lineCtaBlock();
+    if (window.initUrgency) window.initUrgency();
+    if (window.initReveal) window.initReveal();
+  });
+</script>
+</body>
+</html>
