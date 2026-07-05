@@ -66,8 +66,9 @@
           '</div>' +
           '<div><h4>สินค้า</h4><ul>' +
             '<li><a href="shop.html?cat=protein">โปรตีน</a></li>' +
+            '<li><a href="shop.html?cat=collagen">คอลลาเจน</a></li>' +
             '<li><a href="shop.html?cat=vitamin">วิตามิน</a></li>' +
-            '<li><a href="shop.html?cat=capsule">แคปซูล</a></li>' +
+            '<li><a href="shop.html?cat=fiber">ไฟเบอร์</a></li>' +
             '<li><a href="bundle.html">เซ็ตสุดคุ้ม</a></li>' +
           '</ul></div>' +
           '<div><h4>เกี่ยวกับเรา</h4><ul>' +

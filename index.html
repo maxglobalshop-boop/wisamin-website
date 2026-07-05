@@ -70,9 +70,9 @@
       <div class="reveal">
         <span class="pill">ประหยัดสูงสุด 25%</span>
         <h2 style="margin:14px 0">เซ็ต Daily Essentials<br>ดูแลตัวเองครบ จบในเซ็ตเดียว</h2>
-        <p class="lead">รวม 3 ตัวช่วยประจำวันที่คนรักสุขภาพเลือกมากที่สุด — มัลติวิตามินรวม, วิตามินซี และน้ำมันปลาโอเมก้า-3 ในราคาสุดคุ้ม</p>
+        <p class="lead">รวม 3 ตัวช่วยประจำวันที่คนรักสุขภาพเลือกมากที่สุด — วิตามินซี, ใยอาหารจากถั่วลันเตา และกลูต้าคอลลาเจนชงดื่ม ในราคาสุดคุ้ม</p>
         <ul class="feature-list">
-          <li><span class="ic">✓</span> คุ้มกว่าซื้อแยกกว่า ฿700</li>
+          <li><span class="ic">✓</span> คุ้มกว่าซื้อแยกกว่า ฿54</li>
           <li><span class="ic">✓</span> ครบชุดดูแลสุขภาพประจำวัน</li>
           <li><span class="ic">✓</span> ส่งฟรีทั่วไทย</li>
         </ul>
@@ -82,11 +82,7 @@
         </div>
       </div>
       <div class="reveal hero-visual" style="background:radial-gradient(circle at 50% 40%,#fff,#e6ebda)">
-        <div style="display:flex;gap:14px">
-          <div class="hero-jar" style="width:110px;height:150px;background:linear-gradient(160deg,#e0a63c,#b07d1f)"><div class="jar-label" style="font-size:.9rem">MULTI</div></div>
-          <div class="hero-jar" style="width:110px;height:150px;background:linear-gradient(160deg,#f0803c,#c85f1f)"><div class="jar-label" style="font-size:.9rem">VIT C</div></div>
-          <div class="hero-jar" style="width:110px;height:150px;background:linear-gradient(160deg,#3c7fb0,#295a80)"><div class="jar-label" style="font-size:.85rem">OMEGA</div></div>
-        </div>
+        <div style="display:flex;gap:14px" data-bundle-thumbs></div>
       </div>
     </div>
   </div>
@@ -178,8 +174,15 @@
 <script>
   document.addEventListener('DOMContentLoaded', function () {
     // สินค้าเด่น 4 ตัว
-    var featured = ['whey-isolate','multivitamin','vitamin-c','probiotic'].map(getProductById);
+    var featured = ['protein-plant','gluta-colla-blink','active-c','pea-fiber'].map(getProductById);
     renderGrid('[data-featured-grid]', featured);
+    // รูปสินค้าจริงในบันเดิล
+    var bundleThumbs = document.querySelector('[data-bundle-thumbs]');
+    if (bundleThumbs) {
+      bundleThumbs.innerHTML = window.WISAMIN_BUNDLE.items.map(getProductById).map(function (p) {
+        return '<img src="' + p.image + '" alt="' + p.name + '" style="width:110px;height:150px;object-fit:cover;border-radius:16px;box-shadow:var(--shadow)">';
+      }).join('');
+    }
     // แทรก CTA ไลน์
     var slot = document.querySelector('[data-line-cta]');
     if (slot) slot.outerHTML = window.lineCtaBlock();

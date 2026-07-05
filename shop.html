@@ -27,12 +27,7 @@
 
 <section class="section-sm">
   <div class="container">
-    <div class="filter-bar" data-filter-bar style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:28px">
-      <button class="btn btn-outline" data-cat="all">ทั้งหมด</button>
-      <button class="btn btn-outline" data-cat="protein">โปรตีน</button>
-      <button class="btn btn-outline" data-cat="vitamin">วิตามิน</button>
-      <button class="btn btn-outline" data-cat="capsule">แคปซูล</button>
-    </div>
+    <div class="filter-bar" data-filter-bar style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:28px"></div>
     <div class="grid grid-4" data-shop-grid></div>
   </div>
 </section>
@@ -50,6 +45,10 @@
     var all = window.WISAMIN_PRODUCTS;
     var params = new URLSearchParams(location.search);
     var current = params.get('cat') || 'all';
+
+    document.querySelector('[data-filter-bar]').innerHTML = window.WISAMIN_CATEGORIES.map(function (c) {
+      return '<button class="btn btn-outline" data-cat="' + c.key + '">' + c.label + '</button>';
+    }).join('');
 
     function apply(cat) {
       current = cat;
